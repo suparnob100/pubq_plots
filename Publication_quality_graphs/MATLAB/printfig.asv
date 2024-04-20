@@ -1,0 +1,18 @@
+function printfig(select, figname, frmt, oll, fnt, a, b, ori, chngc, pad)
+    pth = mfilename('fullpath')
+    cd(pth)
+    P = mfilename('fullpath')
+    formats1 = getFormats(); % Assume getFormats() returns formats1, formats2, and formats3
+    [FileName, PathName, Filepath, frmt] = handleUserInput(select, figname, formats1);
+
+    % Iterate through each file
+    N = determineNumberOfFiles(FileName);
+    for i = 1:N
+        fig = openFigure(Filepath, i);
+        modifyFigureProperties(fig, fnt, chngc); % Adjust basic figure properties like color
+        adjustLineAndMarkerProperties(fig);     % Adjust line and marker properties
+        adjustAxisProperties(fig, xp, a, b);    % Adjust axis properties
+        adjustLegend(fig, oll, ori, pad);       % Adjust legend properties
+        printOutput(fig, FileName, frmt, i);    % Print or save the figure
+    end
+end
