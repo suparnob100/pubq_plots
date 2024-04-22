@@ -39,7 +39,7 @@ def fig2py(filename):
         ax_children=ax_children['children'][0,0]
 
     plot_data = extract_plot_data(ax_children)
-    
+
     return plot_data
 
 # data = fig2py('hist')
